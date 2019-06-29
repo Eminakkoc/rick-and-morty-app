@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 const SCSS_PATTERN = /\.scss$/;
+const JS_JSX_PATTERN = /\.jsx?$/;
 
 const config = {
     entry: {
@@ -21,6 +22,12 @@ const config = {
     },
     module: {
         rules: [
+            {
+                test: JS_JSX_PATTERN,
+                exclude: /node_modules/,
+                enforce: 'pre',
+                loader: 'eslint-loader'
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -58,6 +65,11 @@ const config = {
                     },
                 },
             },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ["babel-loader", "eslint-loader"]
+            }
         ]
     },
     resolve: {

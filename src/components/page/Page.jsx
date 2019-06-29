@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Page extends Component {
-    render() {
-        return (
-            <div className="page-container">
-                {this.props.children}
-            </div>
-        );
-    }
-}
+const Page = (props) => {
+  const { children } = props;
+
+  return (
+    <div className="page-container">
+      {children}
+    </div>
+  );
+};
 
 Page.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 Page.defaultProps = {
-    children: null,
+  children: null,
 };
 
 export default Page;
