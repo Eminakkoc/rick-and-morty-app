@@ -24,7 +24,7 @@ class MainPage extends Component {
     super(props);
 
     this.state = {
-      initialLoad: !props.selectedCharacter,
+      initialLoad: (!props.selectedCharacter || !props.selectedCharacter.name),
       page: 1,
     };
   }
@@ -143,18 +143,15 @@ MainPage.defaultProps = {
     image: '',
   }],
   selectedCharacter: {
-    name: '',
+    name: null,
     image: '',
   },
 };
 
 export default graphql(query, {
-  options: (props) => {
-    console.log(props);
-    return ({
-      variables: {
-        page: 1,
-      },
-    });
-  },
+  options: () => ({
+    variables: {
+      page: 1,
+    },
+  }),
 })(MainPage);

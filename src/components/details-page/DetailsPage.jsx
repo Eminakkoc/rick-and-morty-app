@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Page from 'components/page/Page';
 import CharacterDetail from 'components/character-detail/CharacterDetail';
-import PlaceholderImage from 'images/placeholder.jpg';
+import LoadingCharacterDetail from 'components/character-detail/LoadingCharacterDetail';
 
 import history from 'common/history/History';
 import paths from 'routes/paths';
@@ -56,12 +56,7 @@ class DetailsPage extends Component {
                   episodeList={episodeList}
                 />
               ) : (
-                <CharacterDetail
-                  name="Emin"
-                  origin="Ankara"
-                  image={PlaceholderImage}
-                  episodeList={['asd', 'zxc', 'wer', 'try', 'bnm']}
-                />
+                <LoadingCharacterDetail />
               )
           }
         </div>
@@ -120,12 +115,9 @@ ${queries.getCharacterInfo()}
 `;
 
 export default graphql(query, {
-  options: (props) => {
-    console.log(props);
-    return ({
-      variables: {
-        name: props.selectedCharacter.name,
-      },
-    });
-  },
+  options: props => ({
+    variables: {
+      name: props.selectedCharacter.name,
+    },
+  }),
 })(DetailsPage);

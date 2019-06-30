@@ -36,6 +36,11 @@
         flex-direction: column;
         padding: 20px;
 
+        &.loading {
+          align-items: center;
+          justify-content: center;
+        }
+
         @include small-screen {
           width: 100%;
           padding: 0;
