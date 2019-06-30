@@ -16,9 +16,6 @@ export default (state = initialState, action) => {
     case CHARACTER_ACTIONS.SELECT_CHARACTER: {
       return !action.error ? { ...state, selectedCharacter: action.payload } : state;
     }
-    case CHARACTER_ACTIONS.SET_SELECTED_CHARACTER_INFO: {
-      return !action.error ? { ...state, selectedCharacterInfo: action.payload } : state;
-    }
     default:
       return state;
   }

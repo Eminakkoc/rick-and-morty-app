@@ -10,7 +10,7 @@ import ReduxStore from 'state/ReduxStore';
 import paths from 'routes/paths';
 
 import MainPageContainer from 'components/main-page/MainPageContainer';
-import DetailsPage from 'components/details-page/DetailsPage';
+import DetailsPageContainer from 'components/details-page/DetailsPageContainer';
 import { LanguageProvider } from 'common/language/LanguageContext';
 
 import history from 'common/history/History';
@@ -42,7 +42,7 @@ ReactDOM.render(
             />
             <Route
               path={paths.DETAILS_PAGE}
-              component={DetailsPage}
+              component={DetailsPageContainer}
             />
           </Switch>
         </Router>

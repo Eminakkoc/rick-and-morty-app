@@ -8,7 +8,7 @@ import LoadingCharacterCard from 'components/character-card/LoadingCharacterCard
 import history from 'common/history/History';
 import paths from 'routes/paths';
 
-import constants from 'common/constants';
+import queries from 'common/queries/queries';
 
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -24,14 +24,18 @@ class MainPage extends Component {
     super(props);
 
     this.state = {
-      initialLoad: true,
+      initialLoad: !props.selectedCharacter,
+      page: 1,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const { initialLoad } = this.state;
     const { data: { loading } } = this.props;
-    const { addCharacters, selectedCharacter } = this.props;
+    const {
+      addCharacters,
+      selectedCharacter,
+    } = this.props;
 
     if (initialLoad && !nextProps.data.loading) {
       this.setState({
@@ -47,6 +51,19 @@ class MainPage extends Component {
       redirectToDetailsPage();
     }
   }
+
+  fetchData = () => {
+    const { data: { refetch } } = this.props;
+    const { page } = this.state;
+    const newPage = page + 1;
+
+    refetch({
+      page: newPage,
+    });
+    this.setState({
+      page: newPage,
+    });
+  };
 
   render() {
     const { data: { loading } } = this.props;
@@ -72,6 +89,12 @@ class MainPage extends Component {
               ))
             )
           }
+          <button
+            type="button"
+            onClick={this.fetchData}
+          >
+            BAS
+          </button>
         </div>
       </Page>
     );
@@ -79,7 +102,7 @@ class MainPage extends Component {
 }
 
 const query = gql`
-${constants.GET_CHARACTERS}
+${queries.getCharacters()}
 `;
 
 MainPage.propTypes = {
@@ -91,6 +114,7 @@ MainPage.propTypes = {
         image: PropTypes.string,
       })),
     }),
+    refetch: PropTypes.func.isRequired,
   }),
   characterList: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
@@ -124,4 +148,13 @@ MainPage.defaultProps = {
   },
 };
 
-export default graphql(query)(MainPage);
+export default graphql(query, {
+  options: (props) => {
+    console.log(props);
+    return ({
+      variables: {
+        page: 1,
+      },
+    });
+  },
+})(MainPage);
