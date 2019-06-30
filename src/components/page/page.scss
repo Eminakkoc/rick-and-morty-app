@@ -1,0 +1,24 @@
+.page-container {
+  .page-header {
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: $grey;
+
+    .page-logo {
+      $logo-width: 200px;
+      $logo-height: 64px;
+
+      margin-left: 70px;
+
+      background-size: $logo-width $logo-height;
+      background-image: url('~images/rick_and_morty_logo.png');
+
+      width: $logo-width;
+      height: $logo-height;
+    }
+  }
+}

@@ -6,6 +6,9 @@ const Page = (props) => {
 
   return (
     <div className="page-container">
+      <div className="page-header">
+        <div className="page-logo" />
+      </div>
       {children}
     </div>
   );
