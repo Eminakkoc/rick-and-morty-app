@@ -13,5 +13,10 @@
       height: 240px;
       width: 240px;
     }
+
+    .loading-card-image {
+      @include font36();
+      color: $green;
+    }
   }
 }
