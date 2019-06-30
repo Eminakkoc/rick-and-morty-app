@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const InfoPair = (props) => {
   const { label, value } = props;
 
-  console.log(props);
   return (
     <div className="info-pair-container">
       <div className="info-pair-key">

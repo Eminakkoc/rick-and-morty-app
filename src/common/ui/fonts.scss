@@ -42,3 +42,13 @@
     font-size: 24px;
   }
 }
+
+@mixin font48($fontWeight: regular) {
+  @include font-weight($fontWeight);
+
+  font-size: 48px;
+
+  @include small-screen {
+    font-size: 36px;
+  }
+}

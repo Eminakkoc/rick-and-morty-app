@@ -44,14 +44,16 @@ const CharacterDetail = (props) => {
                   <div className="character-name">
                     {name}
                   </div>
-                  <InfoPair
-                    label={languages[language].character_details_origin_label}
-                    value={origin}
-                  />
-                  <InfoPair
-                    label={languages[language].character_details_episodes_label}
-                    value={getEpisodes(episodeList)}
-                  />
+                  <div className="details-character-info">
+                    <InfoPair
+                      label={languages[language].character_details_origin_label}
+                      value={origin}
+                    />
+                    <InfoPair
+                      label={languages[language].character_details_episodes_label}
+                      value={getEpisodes(episodeList)}
+                    />
+                  </div>
                 </div>
               </div>
             </CardContent>

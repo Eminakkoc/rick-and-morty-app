@@ -11,6 +11,7 @@ const DetailsPage = () => (
         name="Emin"
         origin="Ankara"
         image={PlaceholderImage}
+        episodeList={['asd', 'zxc', 'wer', 'try', 'bnm']}
       />
     </div>
   </Page>

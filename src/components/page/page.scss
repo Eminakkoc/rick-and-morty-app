@@ -19,6 +19,10 @@
 
       width: $logo-width;
       height: $logo-height;
+
+      @include small-screen {
+        margin: 0 auto;
+      }
     }
   }
 }

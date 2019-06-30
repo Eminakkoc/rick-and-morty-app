@@ -1,4 +1,8 @@
 .info-pair-container {
+  display: flex;
+
+  margin: 10px 0;
+
   .info-pair-key, .info-pair-value {
     @include font24();
 
