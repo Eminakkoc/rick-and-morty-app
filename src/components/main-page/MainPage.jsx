@@ -28,19 +28,29 @@ class MainPage extends Component {
     };
   }
 
-  getDerivedStateFromProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { initialLoad } = this.state;
+    const { data: { loading } } = this.props;
+    const { addCharacters, selectedCharacter } = this.props;
 
     if (initialLoad && !nextProps.data.loading) {
       this.setState({
         initialLoad: false,
       });
     }
+
+    if (loading && !nextProps.data.loading && nextProps.data.characters) {
+      addCharacters(nextProps.data.characters.results);
+    }
+
+    if (selectedCharacter !== nextProps.selectedCharacter) {
+      redirectToDetailsPage();
+    }
   }
 
   render() {
     const { data: { loading } } = this.props;
-    const { data } = this.props;
+    const { characterList, selectCharacter } = this.props;
     const { initialLoad } = this.state;
 
     return (
@@ -53,14 +63,11 @@ class MainPage extends Component {
                 <LoadingCharacterCard />
               </div>
             ) : (
-              data
-              && data.characters
-              && data.characters.results
-              && data.characters.results.map(character => (
+              characterList.map(character => (
                 <CharacterCard
                   name={character.name}
                   image={character.image}
-                  detailsCallback={redirectToDetailsPage}
+                  detailsCallback={selectCharacter}
                 />
               ))
             )
@@ -85,17 +92,35 @@ MainPage.propTypes = {
       })),
     }),
   }),
+  characterList: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    image: PropTypes.string,
+  })),
+  addCharacters: PropTypes.func.isRequired,
+  selectCharacter: PropTypes.func.isRequired,
+  selectedCharacter: PropTypes.shape({
+    name: PropTypes.string,
+    image: PropTypes.string,
+  }),
 };
 
 MainPage.defaultProps = {
   data: {
     loading: false,
     characters: {
-      results: {
+      results: [{
         name: '',
         image: '',
-      },
+      }],
     },
+  },
+  characterList: [{
+    name: '',
+    image: '',
+  }],
+  selectedCharacter: {
+    name: '',
+    image: '',
   },
 };
 

@@ -4,9 +4,12 @@ import './index.scss';
 
 import { Router, Route, Switch } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import ReduxStore from 'state/ReduxStore';
+
 import paths from 'routes/paths';
 
-import MainPage from 'components/main-page/MainPage';
+import MainPageContainer from 'components/main-page/MainPageContainer';
 import DetailsPage from 'components/details-page/DetailsPage';
 import { LanguageProvider } from 'common/language/LanguageContext';
 
@@ -28,22 +31,24 @@ const client = new ApolloClient({
 
 
 ReactDOM.render(
-  <LanguageProvider>
-    <ApolloProvider client={client}>
-      <Router history={history}>
-        <Switch>
-          <Route
-            path={paths.MAIN_PAGE}
-            component={MainPage}
-          />
-          <Route
-            path={paths.DETAILS_PAGE}
-            component={DetailsPage}
-          />
-        </Switch>
-      </Router>
-    </ApolloProvider>
-  </LanguageProvider>,
+  <Provider store={ReduxStore.store}>
+    <LanguageProvider>
+      <ApolloProvider client={client}>
+        <Router history={history}>
+          <Switch>
+            <Route
+              path={paths.MAIN_PAGE}
+              component={MainPageContainer}
+            />
+            <Route
+              path={paths.DETAILS_PAGE}
+              component={DetailsPage}
+            />
+          </Switch>
+        </Router>
+      </ApolloProvider>
+    </LanguageProvider>
+  </Provider>,
   document.getElementById('root'),
 );
 

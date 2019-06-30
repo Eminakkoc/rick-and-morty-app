@@ -12,7 +12,10 @@ const CharacterCard = (props) => {
   return (
     <Card className="card">
       <CardActionArea
-        onClick={detailsCallback}
+        onClick={() => detailsCallback({
+          name,
+          image,
+        })}
       >
         <div className="card-wrapper">
           <CardContent className="card-info">
