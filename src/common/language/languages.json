@@ -1,0 +1,10 @@
+{
+  "en": {
+    "character_details_origin_label": "Origin",
+    "character_details_episodes_label": "Episodes"
+  },
+  "tr": {
+    "character_details_origin_label": "Bulunduğu Yer",
+    "character_details_episodes_label": "Bölümler"
+  }
+}

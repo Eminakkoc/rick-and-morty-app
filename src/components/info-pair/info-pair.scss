@@ -1,0 +1,11 @@
+.info-pair-container {
+  .info-pair-key, .info-pair-value {
+    @include font24();
+
+    color: $grey;
+  }
+
+  .info-pair-key {
+    margin-right: 10px;
+  }
+}

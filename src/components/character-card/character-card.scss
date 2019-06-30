@@ -1,5 +1,5 @@
 .card {
-  width: 200px;
+  width: 240px;
 
   margin: 20px auto;
 
@@ -10,8 +10,8 @@
     @include font36();
 
     .card-image {
-      height: 200px;
-      width: 200px;
+      height: 240px;
+      width: 240px;
     }
   }
 }
