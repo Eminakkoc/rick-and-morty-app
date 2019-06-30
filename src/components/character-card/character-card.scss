@@ -1,13 +1,17 @@
 .card {
   width: 240px;
 
-  margin: 20px auto;
+  margin: 30px auto;
 
   .card-wrapper {
     display: flex;
     flex-direction: column;
 
     @include font36();
+
+    .card-info {
+      background-color: $green;
+    }
 
     .card-image {
       height: 240px;

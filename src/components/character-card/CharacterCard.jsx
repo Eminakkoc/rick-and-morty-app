@@ -6,10 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
-import PlaceholderImage from 'images/placeholder.jpg';
-
 const CharacterCard = (props) => {
-  const { name, detailsCallback } = props;
+  const { name, detailsCallback, image } = props;
 
   return (
     <Card className="card">
@@ -17,12 +15,12 @@ const CharacterCard = (props) => {
         onClick={detailsCallback}
       >
         <div className="card-wrapper">
-          <CardContent>
+          <CardContent className="card-info">
             {name}
           </CardContent>
           <CardMedia
             className="card-image"
-            image={PlaceholderImage}
+            image={image}
             title="Contemplative Reptile"
           />
         </div>
@@ -33,11 +31,13 @@ const CharacterCard = (props) => {
 
 CharacterCard.propTypes = {
   name: PropTypes.string,
+  image: PropTypes.string,
   detailsCallback: PropTypes.func,
 };
 
 CharacterCard.defaultProps = {
   name: '',
+  image: '',
   detailsCallback: () => {},
 };
 

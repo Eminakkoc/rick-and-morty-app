@@ -8,6 +8,8 @@ import LoadingCharacterCard from 'components/character-card/LoadingCharacterCard
 import history from 'common/history/History';
 import paths from 'routes/paths';
 
+import constants from 'common/constants';
+
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -38,6 +40,7 @@ class MainPage extends Component {
 
   render() {
     const { data: { loading } } = this.props;
+    const { data } = this.props;
     const { initialLoad } = this.state;
 
     return (
@@ -50,10 +53,16 @@ class MainPage extends Component {
                 <LoadingCharacterCard />
               </div>
             ) : (
-              <CharacterCard
-                name="Example"
-                detailsCallback={redirectToDetailsPage}
-              />
+              data
+              && data.characters
+              && data.characters.results
+              && data.characters.results.map(character => (
+                <CharacterCard
+                  name={character.name}
+                  image={character.image}
+                  detailsCallback={redirectToDetailsPage}
+                />
+              ))
             )
           }
         </div>
@@ -63,32 +72,30 @@ class MainPage extends Component {
 }
 
 const query = gql`
-{
-  characters(page: 1) {
-    info {
-      count
-    }
-    results {
-      name
-      image
-      origin {
-        name
-      }
-      episode {name}
-    }
-  }
-}
+${constants.GET_CHARACTERS}
 `;
 
 MainPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
+    characters: PropTypes.shape({
+      results: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        image: PropTypes.string,
+      })),
+    }),
   }),
 };
 
 MainPage.defaultProps = {
   data: {
     loading: false,
+    characters: {
+      results: {
+        name: '',
+        image: '',
+      },
+    },
   },
 };
 
