@@ -1,0 +1,7 @@
+$small-screen: '(max-width: 768px)';
+
+@mixin small-screen {
+  @media #{$small-screen} {
+    @content;
+  }
+}

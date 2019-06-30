@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'RickAndMortyFont';
+  src: url('~fonts/get_schwifty.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@mixin font-weight($fontWeight) {
+  @if $fontWeight == regular {
+    font-family: 'RickAndMortyFont', sans-serif;
+  } @else if $fontWeight == bold {
+    font-weight: 700;
+    font-family: 'RickAndMortyFont', sans-serif;
+  }
+}
+
+
+@mixin font16($fontWeight: regular) {
+  @include font-weight($fontWeight);
+
+  font-size: 16px;
+
+  @include small-screen {
+    font-size: 12px;
+  }
+}
+
+@mixin font24($fontWeight: regular) {
+  @include font-weight($fontWeight);
+
+  font-size: 24px;
+
+  @include small-screen {
+    font-size: 16px;
+  }
+}
+
+@mixin font36($fontWeight: regular) {
+  @include font-weight($fontWeight);
+
+  font-size: 36px;
+
+  @include small-screen {
+    font-size: 24px;
+  }
+}

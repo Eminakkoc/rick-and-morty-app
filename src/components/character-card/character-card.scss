@@ -1,0 +1,17 @@
+.card {
+  width: 200px;
+
+  margin: 20px auto;
+
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include font36();
+
+    .card-image {
+      height: 200px;
+      width: 200px;
+    }
+  }
+}

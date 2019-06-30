@@ -2,11 +2,6 @@ $red: #ff0100;
 
 .main-page-container {
   color: $red;
-}
 
-.card {
-  .card-image {
-    height: 200px;
-    width: 200px;
-  }
+  @include font16();
 }
