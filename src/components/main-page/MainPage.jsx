@@ -102,6 +102,9 @@ class MainPage extends Component {
           >
             BAS
           </button>
+          <div className="small-loading-container">
+            <div className="small-loading" />
+          </div>
         </div>
       </Page>
     );
