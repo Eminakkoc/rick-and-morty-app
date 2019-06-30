@@ -11,7 +11,7 @@ export class LanguageProvider extends Component {
     super(props);
 
     this.state = {
-      language: 'en',
+      language: 'tr',
       updateLanguage: this.updateLanguage,
     };
   }

@@ -61,6 +61,20 @@
           @include small-screen {
             margin: 20px auto;
           }
+
+          .info-pair-container {
+            .info-pair-value {
+              .episode-list-container {
+                .episode {
+                  margin-bottom: 15px;
+
+                  @include small-screen {
+                    margin-bottom: 10px;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

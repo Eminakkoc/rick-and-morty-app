@@ -7,20 +7,27 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 
 import LoadingImage from 'images/circle_loading.gif';
 
+import { LanguageConsumer } from 'common/language/LanguageContext';
+import languages from 'common/language/languages';
+
 const LoadingCharacterCard = () => (
-  <Card className="card">
-    <CardActionArea>
-      <div className="card-wrapper">
-        <CardContent>
-          {'Loading...'}
-        </CardContent>
-        <CardMedia
-          className="card-image"
-          image={LoadingImage}
-        />
-      </div>
-    </CardActionArea>
-  </Card>
+  <LanguageConsumer>
+    {({ language }) => (
+      <Card className="card">
+        <CardActionArea>
+          <div className="card-wrapper">
+            <CardContent>
+              {languages[language].loading}
+            </CardContent>
+            <CardMedia
+              className="card-image"
+              image={LoadingImage}
+            />
+          </div>
+        </CardActionArea>
+      </Card>
+    )}
+  </LanguageConsumer>
 );
 
 export default LoadingCharacterCard;
