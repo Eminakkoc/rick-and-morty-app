@@ -22,5 +22,14 @@
       @include font36();
       color: $green;
     }
+
+    &.error {
+      color: $red;
+      text-align: center;
+    }
+
+    &.loading {
+      text-align: center;
+    }
   }
 }

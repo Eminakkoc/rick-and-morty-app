@@ -5,23 +5,23 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
-import LoadingImage from 'images/circle_loading.gif';
+import ErrorImage from 'images/error.gif';
 
 import { LanguageConsumer } from 'common/language/LanguageContext';
 import languages from 'common/language/languages';
 
-const LoadingCharacterCard = () => (
+const ErrorCharacterCard = () => (
   <LanguageConsumer>
     {({ language }) => (
       <Card className="card">
         <CardActionArea>
-          <div className="card-wrapper loading">
+          <div className="card-wrapper error">
             <CardContent>
-              {languages[language].loading}
+              {languages[language].error}
             </CardContent>
             <CardMedia
               className="card-image"
-              image={LoadingImage}
+              image={ErrorImage}
             />
           </div>
         </CardActionArea>
@@ -30,4 +30,4 @@ const LoadingCharacterCard = () => (
   </LanguageConsumer>
 );
 
-export default LoadingCharacterCard;
+export default ErrorCharacterCard;

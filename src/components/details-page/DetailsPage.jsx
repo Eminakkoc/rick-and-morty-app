@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Page from 'components/page/Page';
 import CharacterDetail from 'components/character-detail/CharacterDetail';
 import LoadingCharacterDetail from 'components/character-detail/LoadingCharacterDetail';
+import ErrorCharacterCard from 'components/character-card/ErrorCharacterCard';
 
 import history from 'common/history/History';
 import paths from 'routes/paths';
@@ -32,7 +33,7 @@ class DetailsPage extends Component {
   }
 
   render() {
-    const { data: { characters } } = this.props;
+    const { data: { characters, error, loading } } = this.props;
     const results = characters && characters.results;
     let episodeList;
     let info;
@@ -47,17 +48,24 @@ class DetailsPage extends Component {
       <Page backTransition={redirectToMainPage}>
         <div className="details-page-container">
           {
-            results
-              ? (
-                <CharacterDetail
-                  name={info.name}
-                  origin={info.origin.name}
-                  image={info.image}
-                  episodeList={episodeList}
-                />
-              ) : (
-                <LoadingCharacterDetail />
-              )
+            error
+            && (
+              <ErrorCharacterCard />
+            )
+          }
+          {
+            !error && loading && <LoadingCharacterDetail />
+          }
+          {
+            results && !error && !loading
+            && (
+              <CharacterDetail
+                name={info.name}
+                origin={info.origin.name}
+                image={info.image}
+                episodeList={episodeList}
+              />
+            )
           }
         </div>
       </Page>
@@ -68,6 +76,7 @@ class DetailsPage extends Component {
 DetailsPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
+    error: PropTypes.shape(),
     characters: PropTypes.shape({
       results: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
@@ -91,6 +100,7 @@ DetailsPage.propTypes = {
 DetailsPage.defaultProps = {
   data: {
     loading: false,
+    error: false,
     characters: {
       results: [{
         name: '',

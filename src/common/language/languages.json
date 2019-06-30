@@ -3,12 +3,14 @@
     "character_details_origin_label": "Origin",
     "character_details_episodes_label": "Episodes",
     "back_button": "Back",
-    "loading": "Loading"
+    "loading": "Loading",
+    "error": "An error occured"
   },
   "tr": {
     "character_details_origin_label": "Bulunduğu Yer",
     "character_details_episodes_label": "Bölümler",
     "back_button": "Geri",
-    "loading": "Yükleniyor"
+    "loading": "Yükleniyor",
+    "error": "Bir hata oluştu"
   }
 }

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Page from 'components/page/Page';
 import CharacterCard from 'components/character-card/CharacterCard';
 import LoadingCharacterCard from 'components/character-card/LoadingCharacterCard';
+import ErrorCharacterCard from 'components/character-card/ErrorCharacterCard';
 
 import history from 'common/history/History';
 import paths from 'routes/paths';
@@ -66,7 +67,7 @@ class MainPage extends Component {
   };
 
   render() {
-    const { data: { loading } } = this.props;
+    const { data: { loading, error } } = this.props;
     const { characterList, selectCharacter } = this.props;
     const { initialLoad } = this.state;
 
@@ -74,7 +75,13 @@ class MainPage extends Component {
       <Page>
         <div className="main-page-container">
           {
-            loading && initialLoad ? (
+            error
+            && (
+              <ErrorCharacterCard />
+            )
+          }
+          {
+            loading && initialLoad && !error ? (
               <div>
                 <LoadingCharacterCard />
                 <LoadingCharacterCard />
@@ -108,6 +115,7 @@ ${queries.getCharacters()}
 MainPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
+    error: PropTypes.shape(),
     characters: PropTypes.shape({
       results: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,

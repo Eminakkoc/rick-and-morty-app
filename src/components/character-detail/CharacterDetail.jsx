@@ -21,7 +21,7 @@ const CharacterDetail = (props) => {
   const getEpisodes = episodes => (
     <div className="episode-list-container">
       {
-        episodes && episodes.map(episode => (
+        episodes && episodes.slice(0, 5).map(episode => (
           <div className="episode">
             { episode }
           </div>
