@@ -21,6 +21,16 @@ const redirectToMainPage = () => {
 };
 
 class DetailsPage extends Component {
+  componentWillMount() {
+    const { selectedCharacter: { name } } = this.props;
+
+    if (!name) {
+      history.replace({
+        pathname: paths.MAIN_PAGE,
+      });
+    }
+  }
+
   componentDidUpdate(prevProps) {
     const { data: { refetch } } = this.props;
     const { selectedCharacter } = this.props;
@@ -115,7 +125,7 @@ DetailsPage.defaultProps = {
     },
   },
   selectedCharacter: {
-    name: '',
+    name: null,
     image: '',
   },
 };
@@ -127,7 +137,7 @@ ${queries.getCharacterInfo()}
 export default graphql(query, {
   options: props => ({
     variables: {
-      name: props.selectedCharacter.name,
+      name: props.selectedCharacter && props.selectedCharacter.name,
     },
   }),
 })(DetailsPage);
