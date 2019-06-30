@@ -1,4 +1,7 @@
 .page-container {
+  display: flex;
+  flex-direction: column;
+
   .page-header {
     width: 100%;
     height: 90px;
@@ -23,6 +26,26 @@
       @include small-screen {
         margin: 0 auto;
       }
+    }
+  }
+
+  .page-back-button {
+    @include font24();
+    color: $green;
+
+    margin: 20px auto 0 auto;
+    width: 700px;
+
+    border: none;
+    text-align: left;
+
+    cursor: pointer;
+    outline: none;
+
+    @include small-screen {
+      width: 100%;
+
+      margin-left: 20px;
     }
   }
 }

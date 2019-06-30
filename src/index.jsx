@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
-import { createBrowserHistory } from 'history';
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 import paths from 'routes/paths';
 
@@ -12,11 +10,13 @@ import MainPage from 'components/main-page/MainPage';
 import DetailsPage from 'components/details-page/DetailsPage';
 import { LanguageProvider } from 'common/language/LanguageContext';
 
+import history from 'common/history/History';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <LanguageProvider>
-    <Router history={createBrowserHistory()}>
+    <Router history={history}>
       <Switch>
         <Route
           path={paths.MAIN_PAGE}

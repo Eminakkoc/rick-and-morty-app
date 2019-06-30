@@ -9,11 +9,13 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import PlaceholderImage from 'images/placeholder.jpg';
 
 const CharacterCard = (props) => {
-  const { name } = props;
+  const { name, detailsCallback } = props;
 
   return (
     <Card className="card">
-      <CardActionArea>
+      <CardActionArea
+        onClick={detailsCallback}
+      >
         <div className="card-wrapper">
           <CardContent>
             {name}
@@ -31,10 +33,12 @@ const CharacterCard = (props) => {
 
 CharacterCard.propTypes = {
   name: PropTypes.string,
+  detailsCallback: PropTypes.func,
 };
 
 CharacterCard.defaultProps = {
   name: '',
+  detailsCallback: () => {},
 };
 
 export default CharacterCard;

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { LanguageConsumer } from 'common/language/LanguageContext';
+import languages from 'common/language/languages';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import InfoPair from 'components/info-pair/InfoPair';
 
-import languages from 'common/language/languages';
 
 const CharacterDetail = (props) => {
   const {

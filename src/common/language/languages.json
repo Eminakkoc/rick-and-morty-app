@@ -1,10 +1,12 @@
 {
   "en": {
     "character_details_origin_label": "Origin",
-    "character_details_episodes_label": "Episodes"
+    "character_details_episodes_label": "Episodes",
+    "back_button": "Back"
   },
   "tr": {
     "character_details_origin_label": "Bulunduğu Yer",
-    "character_details_episodes_label": "Bölümler"
+    "character_details_episodes_label": "Bölümler",
+    "back_button": "Geri"
   }
 }
