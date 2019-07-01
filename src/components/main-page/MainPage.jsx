@@ -9,6 +9,8 @@ import ErrorCharacterCard from 'components/character-card/ErrorCharacterCard';
 import history from 'common/history/History';
 import paths from 'routes/paths';
 
+import BomUtil from 'common/util/BomUtil';
+
 import queries from 'common/queries/queries';
 
 import { graphql } from 'react-apollo';
@@ -28,6 +30,16 @@ class MainPage extends Component {
       initialLoad: (!props.selectedCharacter || !props.selectedCharacter.name),
       page: 1,
     };
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', BomUtil.debounce(() => {
+      const { characterList } = this.props;
+
+      if (BomUtil.isScrolledToBottom() && characterList && characterList.length > 1) {
+        this.fetchData();
+      }
+    }, 100));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,11 +70,12 @@ class MainPage extends Component {
     const { page } = this.state;
     const newPage = page + 1;
 
-    refetch({
-      page: newPage,
-    });
     this.setState({
       page: newPage,
+    }, () => {
+      refetch({
+        page: newPage,
+      });
     });
   };
 
@@ -96,15 +109,13 @@ class MainPage extends Component {
               ))
             )
           }
-          <button
-            type="button"
-            onClick={this.fetchData}
-          >
-            BAS
-          </button>
-          <div className="small-loading-container">
-            <div className="small-loading" />
-          </div>
+          { loading
+          && (
+            <div className="small-loading-container">
+              <div className="small-loading" />
+            </div>
+          )
+          }
         </div>
       </Page>
     );

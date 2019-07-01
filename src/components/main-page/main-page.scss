@@ -15,15 +15,13 @@ $red: #ff0100;
 
     height: $loading-size;
 
-    margin-bottom: 10px;
-
     .small-loading {
       height: $loading-size;
 
       margin: 0 auto;
 
       background-size: $loading-size $loading-size;
-      background-image: url('~images/circle_loading.gif');
+      background-image: url('~images/horizontal_loading.gif');
       background-repeat: no-repeat;
       background-position: center;
     }
