@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Character Detail Component Structure 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation1 MuiCard-root details-card MuiPaper-rounded"
+>
+  <div
+    className="details-card-wrapper"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <div
+        className="details-container"
+      >
+        <div
+          className="details-image-container"
+        >
+          <img
+            alt=""
+            className="details-image"
+            src={null}
+          />
+        </div>
+        <div
+          className="details-wrapper"
+        >
+          <div
+            className="character-name"
+          >
+            
+          </div>
+          <div
+            className="details-character-info"
+          >
+            <div
+              className="info-pair-container"
+            >
+              <div
+                className="info-pair-key"
+              >
+                Origin: 
+              </div>
+              <div
+                className="info-pair-value"
+              />
+            </div>
+            <div
+              className="info-pair-container"
+            >
+              <div
+                className="info-pair-key"
+              >
+                Episodes: 
+              </div>
+              <div
+                className="info-pair-value"
+              >
+                <div
+                  className="episode-list-container"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

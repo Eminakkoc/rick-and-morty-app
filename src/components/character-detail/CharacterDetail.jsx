@@ -46,11 +46,11 @@ const CharacterDetail = (props) => {
                   </div>
                   <div className="details-character-info">
                     <InfoPair
-                      label={languages[language].character_details_origin_label}
+                      label={languages[language || 'en'].character_details_origin_label}
                       value={origin}
                     />
                     <InfoPair
-                      label={languages[language].character_details_episodes_label}
+                      label={languages[language || 'en'].character_details_episodes_label}
                       value={getEpisodes(episodeList)}
                     />
                   </div>

@@ -24,7 +24,7 @@ const CharacterCard = (props) => {
           <CardMedia
             className="card-image"
             image={image}
-            title="Contemplative Reptile"
+            title="Rick And Morty Character"
           />
         </div>
       </CardActionArea>

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info Pair Component Structure 1`] = `
+<div
+  className="info-pair-container"
+>
+  <div
+    className="info-pair-key"
+  >
+    *: 
+  </div>
+  <div
+    className="info-pair-value"
+  >
+    *
+  </div>
+</div>
+`;
