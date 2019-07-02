@@ -24,3 +24,5 @@ yarn-error.log*
 
 .idea
 /dist
+/cypress/screenshots
+/cypress/videos

@@ -27,6 +27,14 @@ class MainPage extends Component {
       loadingInProgress: false,
       selectedElement: null,
     };
+
+    this.debounceScroll = BomUtil.debounce(() => {
+      const { characterList } = this.props;
+
+      if (BomUtil.isScrolledToBottom() && characterList && characterList.length > 1) {
+        this.fetchData();
+      }
+    }, 100);
   }
 
   componentDidMount() {
@@ -66,16 +74,6 @@ class MainPage extends Component {
     window.removeEventListener('scroll', this.debounceScroll);
   }
 
-  debounceScroll = () => {
-    BomUtil.debounce(() => {
-      const { characterList } = this.props;
-
-      if (BomUtil.isScrolledToBottom() && characterList && characterList.length > 1) {
-        this.fetchData();
-      }
-    }, 100);
-  }
-
   fetchData = () => {
     const { data: { refetch } } = this.props;
     const { page } = this.state;
@@ -84,6 +82,7 @@ class MainPage extends Component {
     this.setState({
       page: newPage,
     }, () => {
+      console.log('PAGE: ', newPage);
       refetch({
         page: newPage,
       });
