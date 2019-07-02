@@ -21,11 +21,13 @@ import { ApolloProvider } from 'react-apollo';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-
+import fetch from 'unfetch';
 import * as serviceWorker from './serviceWorker';
 
+const link = createHttpLink({ uri: constants.BASE_URL, fetch });
+
 const client = new ApolloClient({
-  link: createHttpLink({ uri: constants.BASE_URL }),
+  link,
   cache: new InMemoryCache(),
 });
 
