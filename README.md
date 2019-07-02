@@ -88,3 +88,7 @@ Material UI is used for UI Framework
 SCSS is used as preprocessor
 webpack is used for bundling
 ESLint and Styleint are used as linters for js and scss respectively
+
+App will be running on port 3001
+
+Main page url: http://localhost:3001/main
