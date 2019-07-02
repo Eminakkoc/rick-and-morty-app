@@ -24,6 +24,8 @@ class MainPage extends Component {
     this.state = {
       initialLoad: (!props.selectedCharacter || !props.selectedCharacter.name),
       page: 1,
+      loadingInProgress: false,
+      selectedElement: null,
     };
   }
 
@@ -31,27 +33,33 @@ class MainPage extends Component {
     window.addEventListener('scroll', this.debounceScroll);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { initialLoad } = this.state;
-    const { data: { loading } } = this.props;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { initialLoad, loadingInProgress, selectedElement } = prevState;
+    const { data: { loading } } = nextProps;
     const {
       addCharacters,
       selectedCharacter,
-    } = this.props;
+    } = nextProps;
+
+    let updatedtInitialLoad = initialLoad;
 
     if (initialLoad && !nextProps.data.loading) {
-      this.setState({
-        initialLoad: false,
-      });
+      updatedtInitialLoad = false;
     }
 
-    if (loading && !nextProps.data.loading && nextProps.data.characters) {
+    if (loadingInProgress && !nextProps.data.loading && nextProps.data.characters) {
       addCharacters(nextProps.data.characters.results);
     }
 
-    if (selectedCharacter !== nextProps.selectedCharacter) {
+    if (selectedElement && selectedElement !== nextProps.selectedCharacter) {
       redirectToDetailsPage();
     }
+
+    return {
+      initialLoad: updatedtInitialLoad,
+      loadingInProgress: loading,
+      selectedElement: selectedCharacter,
+    };
   }
 
   componentWillUnmount() {
@@ -143,7 +151,8 @@ MainPage.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
   })),
-  addCharacters: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  addCharacters: PropTypes.func.isRequired, //
   selectCharacter: PropTypes.func.isRequired,
   selectedCharacter: PropTypes.shape({
     name: PropTypes.string,
