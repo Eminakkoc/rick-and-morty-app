@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BackButton = (props) => {
-  const { label, callBack } = props;
+  const { children, callBack } = props;
 
   return (
     <button
@@ -10,18 +10,14 @@ const BackButton = (props) => {
       className="back-button"
       onClick={callBack}
     >
-      {label}
+      {children}
     </button>
   );
 };
 
 BackButton.propTypes = {
   callBack: PropTypes.func.isRequired,
-  label: PropTypes.string,
-};
-
-BackButton.defaultProps = {
-  label: '',
+  children: PropTypes.node.isRequired,
 };
 
 export default BackButton;

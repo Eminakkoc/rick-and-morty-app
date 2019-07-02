@@ -17,12 +17,11 @@ const Page = (props) => {
             <div className="page-logo" />
           </div>
           {
-            backTransition ? (
-              <BackButton
-                callBack={backTransition}
-                label={`< ${languages[language].back_button}`}
-              />
-            ) : null
+            backTransition && (
+              <BackButton callBack={backTransition}>
+                {`< ${languages[language].back_button}`}
+              </BackButton>
+            )
           }
           {children}
         </div>

@@ -7,6 +7,7 @@
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
     "apollo-link-http": "^1.5.15",
+    "classnames": "^2.2.6",
     "graphql": "^14.4.1",
     "graphql-tag": "^2.10.1",
     "prop-types": "^15.7.2",
@@ -28,7 +29,9 @@
     "build-webpack": "webpack --mode production",
     "run-build": "webpack-dev-server --inline --hot --env=local",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "test:unit": "yarn jest /unit",
+    "test:snapshot": "yarn jest /snapshot"
   },
   "eslintConfig": {
     "env": {
@@ -62,6 +65,8 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "cypress": "^3.3.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "5.3.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-loader": "^2.1.2",

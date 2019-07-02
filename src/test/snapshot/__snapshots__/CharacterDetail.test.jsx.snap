@@ -34,7 +34,7 @@ exports[`Character Detail Component Structure 1`] = `
             className="details-character-info"
           >
             <div
-              className="info-pair-container"
+              className="info-pair-container character-origin"
             >
               <div
                 className="info-pair-key"
@@ -46,7 +46,7 @@ exports[`Character Detail Component Structure 1`] = `
               />
             </div>
             <div
-              className="info-pair-container"
+              className="info-pair-container character-epsiodes"
             >
               <div
                 className="info-pair-key"
