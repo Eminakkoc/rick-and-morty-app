@@ -1,4 +1,4 @@
-// CharacterCard.test.js
+// InfoPair.test.js
 import React from 'react';
 import InfoPair from '../../components/info-pair/InfoPair';
 import renderer from 'react-test-renderer';

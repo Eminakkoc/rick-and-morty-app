@@ -5,7 +5,9 @@ import renderer from 'react-test-renderer';
 
 test('Character Card Component Structure', () => {
   const component = renderer.create(
-    <CharacterCard />,
+    <CharacterCard
+      image="image_source"
+    />,
   );
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

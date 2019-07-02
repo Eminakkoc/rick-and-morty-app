@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import InfoPair from 'components/info-pair/InfoPair';
 
+import { DEFAULTS } from 'common/constants';
 
 const CharacterDetail = (props) => {
   const {
@@ -46,12 +47,16 @@ const CharacterDetail = (props) => {
                   </div>
                   <div className="details-character-info">
                     <InfoPair
-                      label={languages[language || 'en'].character_details_origin_label}
+                      label={
+                        languages[language || DEFAULTS.LANGAUAGE].character_details_origin_label
+                      }
                       value={origin}
                       className="character-origin"
                     />
                     <InfoPair
-                      label={languages[language || 'en'].character_details_episodes_label}
+                      label={
+                        languages[language || DEFAULTS.LANGAUAGE].character_details_episodes_label
+                      }
                       value={getEpisodes(episodeList)}
                       className="character-epsiodes"
                     />

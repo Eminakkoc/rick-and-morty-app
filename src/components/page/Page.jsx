@@ -5,6 +5,7 @@ import { LanguageConsumer } from 'common/language/LanguageContext';
 import languages from 'common/language/languages';
 
 import BackButton from 'components/back-button/BackButton';
+import { DEFAULTS } from 'common/constants';
 
 const Page = (props) => {
   const { children, backTransition } = props;
@@ -19,7 +20,7 @@ const Page = (props) => {
           {
             backTransition && (
               <BackButton callBack={backTransition}>
-                {`< ${languages[language].back_button}`}
+                {`< ${languages[language || DEFAULTS.LANGAUAGE].back_button}`}
               </BackButton>
             )
           }

@@ -31,7 +31,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:unit": "yarn jest /unit",
-    "test:snapshot": "yarn jest /snapshot"
+    "test:snapshot": "yarn jest /snapshot",
+    "test:all": "yarn jest && cypress run"
   },
   "eslintConfig": {
     "env": {
@@ -99,6 +100,10 @@
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/cypress/"
-    ]
+    ],
+    "moduleFileExtensions": ["js", "json", "jsx", "ts", "tsx", "node", "gif"],
+    "moduleNameMapper": {
+      "^[./a-zA-Z0-9$_-]+\\.gif": "<rootDir>/src/components/main-page/MainPage.jsx"
+    }
   }
 }

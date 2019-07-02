@@ -1,3 +1,8 @@
-export default {
-  BASE_URL: 'https://rickandmortyapi.com/graphql',
+export const URL = {
+  BASE: 'https://rickandmortyapi.com/graphql',
+  IMAGE_PLACEHOLDER: './',
+};
+
+export const DEFAULTS = {
+  LANGAUAGE: 'en',
 };

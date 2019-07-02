@@ -50,7 +50,7 @@ describe('Details page info', () => {
 
       cy.wait('@query', { timeout: 9000 }).then(() => {
         cy.wait(3000);
-        cy.get('.page-back-button').click();
+        cy.get('.back-button').click();
         cy.location().should((loc) => {
           expect(loc.pathname).to.eq('/main');
         });

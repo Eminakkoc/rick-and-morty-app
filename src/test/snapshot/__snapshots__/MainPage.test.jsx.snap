@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Page Component Structure 1`] = `
+<div
+  className="page-container"
+>
+  <div
+    className="page-header"
+  >
+    <div
+      className="page-logo"
+    />
+  </div>
+  <div
+    className="main-page-container"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 MuiCard-root card MuiPaper-rounded"
+    >
+      <button
+        className="MuiButtonBase-root MuiCardActionArea-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <div
+          className="card-wrapper"
+        >
+          <div
+            className="MuiCardContent-root card-info"
+          >
+            
+          </div>
+          <div
+            className="MuiCardMedia-root card-image"
+            style={
+              Object {
+                "backgroundImage": "url(\\"./\\")",
+              }
+            }
+            title="Rick And Morty Character"
+          />
+        </div>
+        <span
+          className="MuiCardActionArea-focusHighlight"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

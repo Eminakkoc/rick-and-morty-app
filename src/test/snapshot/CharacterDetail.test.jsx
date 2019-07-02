@@ -1,4 +1,4 @@
-// CharacterCard.test.js
+// CharacterDetail.test.js
 import React from 'react';
 import CharacterDetail from '../../components/character-detail/CharacterDetail';
 import renderer from 'react-test-renderer';

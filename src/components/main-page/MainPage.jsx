@@ -11,6 +11,8 @@ import paths from 'routes/paths';
 
 import BomUtil from 'common/util/BomUtil';
 
+import { URL } from 'common/constants';
+
 const redirectToDetailsPage = () => {
   history.push({
     pathname: paths.DETAILS_PAGE,
@@ -170,7 +172,7 @@ MainPage.defaultProps = {
   },
   characterList: [{
     name: '',
-    image: '',
+    image: URL.IMAGE_PLACEHOLDER,
   }],
   selectedCharacter: {
     name: null,

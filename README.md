@@ -66,3 +66,25 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Custom scripts
+
+build-webpack: to build bundle
+run-build: run project on webpack dev server
+cypress:open: to run E2E tests on browser
+cypress:run: to run E2E tests
+test:unit: to run unit tests
+test:snapshot: to run snapshot tests
+test:all: to run all E2E, unit and snapshot tests
+
+### Libraries
+
+Cypress is used for E2E testing
+Jest and Enzyme are used for snapshot and unit testing
+GraphQL is used for data querying
+Apollo is used for sending queries with GraphQL
+Redux is used for state management
+Material UI is used for UI Framework
+SCSS is used as preprocessor
+webpack is used for bundling
+ESLint and Styleint are used as linters for js and scss respectively

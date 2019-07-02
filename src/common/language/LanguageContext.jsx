@@ -1,6 +1,8 @@
 import React, { createContext, Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { DEFAULTS } from 'common/constants';
+
 const LanguageContext = createContext({
   language: '',
   updateLanguage: () => {},
@@ -11,7 +13,7 @@ export class LanguageProvider extends Component {
     super(props);
 
     this.state = {
-      language: 'en',
+      language: DEFAULTS.LANGAUAGE,
       updateLanguage: this.updateLanguage,
     };
   }

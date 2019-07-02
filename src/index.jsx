@@ -14,7 +14,7 @@ import DetailsPageContainer from 'components/details-page/DetailsPageContainer';
 import { LanguageProvider } from 'common/language/LanguageContext';
 
 import history from 'common/history/History';
-import constants from 'common/constants';
+import { URL } from 'common/constants';
 
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
@@ -24,7 +24,7 @@ import { createHttpLink } from 'apollo-link-http';
 import fetch from 'unfetch';
 import * as serviceWorker from './serviceWorker';
 
-const link = createHttpLink({ uri: constants.BASE_URL, fetch });
+const link = createHttpLink({ uri: URL.BASE, fetch });
 
 const client = new ApolloClient({
   link,
