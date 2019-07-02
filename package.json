@@ -28,7 +28,7 @@
     "build-webpack": "webpack --mode production",
     "run-build": "webpack-dev-server --inline --hot --env=local",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --browser chrome"
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
     "env": {

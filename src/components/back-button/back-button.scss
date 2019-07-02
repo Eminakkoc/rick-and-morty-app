@@ -1,0 +1,19 @@
+.back-button {
+  @include font24();
+  color: $green;
+
+  margin: 20px auto 0 auto;
+  width: 700px;
+
+  border: none;
+  text-align: left;
+
+  cursor: pointer;
+  outline: none;
+
+  @include small-screen {
+    width: 100%;
+
+    padding-left: 30px;
+  }
+}

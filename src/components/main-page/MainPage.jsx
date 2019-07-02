@@ -82,7 +82,6 @@ class MainPage extends Component {
     this.setState({
       page: newPage,
     }, () => {
-      console.log('PAGE: ', newPage);
       refetch({
         page: newPage,
       });

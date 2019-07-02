@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { LanguageConsumer } from 'common/language/LanguageContext';
 import languages from 'common/language/languages';
 
+import BackButton from 'components/back-button/BackButton';
+
 const Page = (props) => {
   const { children, backTransition } = props;
 
@@ -16,13 +18,10 @@ const Page = (props) => {
           </div>
           {
             backTransition ? (
-              <button
-                type="button"
-                className="page-back-button"
-                onClick={backTransition}
-              >
-                {`< ${languages[language].back_button}`}
-              </button>
+              <BackButton
+                callBack={backTransition}
+                label={`< ${languages[language].back_button}`}
+              />
             ) : null
           }
           {children}
