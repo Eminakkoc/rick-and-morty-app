@@ -79,6 +79,7 @@ test:all: to run all E2E, unit and snapshot tests
 
 ### Libraries
 
+yarn is used for package management
 Cypress is used for E2E testing
 Jest and Enzyme are used for snapshot and unit testing
 GraphQL is used for data querying
