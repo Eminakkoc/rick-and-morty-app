@@ -2,6 +2,7 @@ export default {
   getCharacters: () => `query ($page: Int!) {
   characters(page: $page) {
     results {
+      id
       name
       image
     }
@@ -16,7 +17,10 @@ export default {
       origin {
         name
       }
-      episode {name}
+      episode {
+        id
+        name
+      }
     }
   }
 }`,

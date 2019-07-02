@@ -11,11 +11,6 @@ import paths from 'routes/paths';
 
 import BomUtil from 'common/util/BomUtil';
 
-import queries from 'common/queries/queries';
-
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-
 const redirectToDetailsPage = () => {
   history.push({
     pathname: paths.DETAILS_PAGE,
@@ -33,13 +28,7 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', BomUtil.debounce(() => {
-      const { characterList } = this.props;
-
-      if (BomUtil.isScrolledToBottom() && characterList && characterList.length > 1) {
-        this.fetchData();
-      }
-    }, 100));
+    window.addEventListener('scroll', this.debounceScroll);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,6 +52,20 @@ class MainPage extends Component {
     if (selectedCharacter !== nextProps.selectedCharacter) {
       redirectToDetailsPage();
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.debounceScroll);
+  }
+
+  debounceScroll = () => {
+    BomUtil.debounce(() => {
+      const { characterList } = this.props;
+
+      if (BomUtil.isScrolledToBottom() && characterList && characterList.length > 1) {
+        this.fetchData();
+      }
+    }, 100);
   }
 
   fetchData = () => {
@@ -102,6 +105,7 @@ class MainPage extends Component {
             ) : (
               characterList.map(character => (
                 <CharacterCard
+                  key={`${character.id}`}
                   name={character.name}
                   image={character.image}
                   detailsCallback={selectCharacter}
@@ -122,16 +126,13 @@ class MainPage extends Component {
   }
 }
 
-const query = gql`
-${queries.getCharacters()}
-`;
-
 MainPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.shape(),
     characters: PropTypes.shape({
       results: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
         name: PropTypes.string,
         image: PropTypes.string,
       })),
@@ -170,10 +171,4 @@ MainPage.defaultProps = {
   },
 };
 
-export default graphql(query, {
-  options: () => ({
-    variables: {
-      page: 1,
-    },
-  }),
-})(MainPage);
+export default MainPage;

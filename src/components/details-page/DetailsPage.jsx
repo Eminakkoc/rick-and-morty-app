@@ -9,11 +9,6 @@ import ErrorCharacterCard from 'components/character-card/ErrorCharacterCard';
 import history from 'common/history/History';
 import paths from 'routes/paths';
 
-import queries from 'common/queries/queries';
-
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-
 const redirectToMainPage = () => {
   history.push({
     pathname: paths.MAIN_PAGE,
@@ -42,17 +37,29 @@ class DetailsPage extends Component {
     }
   }
 
-  render() {
-    const { data: { characters, error, loading } } = this.props;
+  getEpisodeList = () => {
+    const { data: { characters } } = this.props;
     const results = characters && characters.results;
-    let episodeList;
+    let episodeList = [];
     let info;
 
     if (results && results[0]) {
       [info] = results;
       episodeList = results[0].episode
-        && info.episode.map(episodeObject => episodeObject.name);
+        && info.episode.map(episodeObject => ({
+          key: episodeObject.id,
+          id: episodeObject.id,
+          name: episodeObject.name,
+        }));
     }
+
+    return episodeList;
+  };
+
+  render() {
+    const { data: { characters, error, loading } } = this.props;
+    const results = characters && characters.results;
+    const [info] = (results && results[0]) ? results : [];
 
     return (
       <Page backTransition={redirectToMainPage}>
@@ -71,9 +78,9 @@ class DetailsPage extends Component {
             && (
               <CharacterDetail
                 name={info.name}
-                origin={info.origin.name}
+                origin={info.origin && info.origin.name}
                 image={info.image}
-                episodeList={episodeList}
+                episodeList={this.getEpisodeList()}
               />
             )
           }
@@ -95,6 +102,7 @@ DetailsPage.propTypes = {
           name: PropTypes.string,
         }),
         episode: PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.string,
           name: PropTypes.string,
         })),
       })),
@@ -119,6 +127,7 @@ DetailsPage.defaultProps = {
           name: '',
         },
         episode: {
+          id: '',
           name: '',
         },
       }],
@@ -130,14 +139,4 @@ DetailsPage.defaultProps = {
   },
 };
 
-const query = gql`
-${queries.getCharacterInfo()}
-`;
-
-export default graphql(query, {
-  options: props => ({
-    variables: {
-      name: props.selectedCharacter && props.selectedCharacter.name,
-    },
-  }),
-})(DetailsPage);
+export default DetailsPage;

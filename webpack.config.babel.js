@@ -106,9 +106,10 @@ const config = {
     }),
   ],
   devServer: {
-    port: 3000,
+    port: 3001,
     historyApiFallback: true,
   },
+  devtool: 'inline-source-map',
 };
 
 export default config;

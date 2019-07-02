@@ -22,8 +22,8 @@ const CharacterDetail = (props) => {
     <div className="episode-list-container">
       {
         episodes && episodes.slice(0, 5).map(episode => (
-          <div className="episode">
-            { episode }
+          <div className="episode" key={`${episode.id}`}>
+            { episode.name }
           </div>
         ))
       }
@@ -68,7 +68,10 @@ CharacterDetail.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   origin: PropTypes.string,
-  episodeList: PropTypes.arrayOf(PropTypes.string),
+  episodeList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+  })),
 };
 
 CharacterDetail.defaultProps = {

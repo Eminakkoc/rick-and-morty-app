@@ -7,7 +7,7 @@ import {
   selectCharacter,
 } from 'state/actions/characterActions';
 
-import MainPage from 'components/main-page/MainPage';
+import MainPageDataContainer from 'components/main-page/MainPageDataContainer';
 
 const mapStateToProps = state => ({
   characterList:
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   selectCharacter,
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageDataContainer);

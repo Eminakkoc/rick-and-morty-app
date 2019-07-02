@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 
-import DetailsPage from 'components/details-page/DetailsPage';
+import DetailsPageDataContainer from 'components/details-page/DetailsPageDataContainer';
 
 const mapStateToProps = state => ({
   selectedCharacter:
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
   state.selectedCharacterInfo,
 });
 
-export default connect(mapStateToProps, null)(DetailsPage);
+export default connect(mapStateToProps, null)(DetailsPageDataContainer);

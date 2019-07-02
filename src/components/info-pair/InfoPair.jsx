@@ -18,7 +18,10 @@ const InfoPair = (props) => {
 
 InfoPair.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
 InfoPair.defaultProps = {
