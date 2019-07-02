@@ -23,3 +23,17 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('requestInitialPageData', () => {
+  cy.server();
+  cy.route({
+    method: 'POST',
+    url: 'https://rickandmortyapi.com/graphql',
+    delay: 1000,
+    status: 200}).as('query');
+  cy.visit('http://localhost:3001/main', {
+    onBeforeLoad (win) {
+      delete win.fetch
+    }
+  });
+});
