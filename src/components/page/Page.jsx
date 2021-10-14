@@ -24,7 +24,7 @@ const Page = (props) => {
               </BackButton>
             )
           }
-          {children}
+          {children}circle
         </div>
       )}
     </LanguageConsumer>
